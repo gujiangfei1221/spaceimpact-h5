@@ -34,7 +34,7 @@ function resizeCanvas() {
         maxH = totalH;
     } else {
         maxW = totalW;
-        maxH = totalH * 0.45; // 游戏画面最多占 45%
+        maxH = totalH * 0.5; // 竖屏 50/50 布局：游戏画面最多占 50%
     }
     const scaleX = Math.floor(maxW / SCREEN_W);
     const scaleY = Math.floor(maxH / SCREEN_H);
