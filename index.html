@@ -6,44 +6,41 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#1a1a2e">
-    <title>Space Impact II</title>
-    <link rel="stylesheet" href="css/style.css">
+    <meta name="theme-color" content="#0a0a1a">
+    <title>Game Center</title>
+    <link rel="stylesheet" href="center.css">
     <link rel="manifest" href="manifest.json">
 </head>
 <body>
-    <div id="loading">Loading...</div>
+    <!-- 扫描线效果 -->
+    <div class="scanlines"></div>
+
+    <!-- 星空背景粒子 -->
+    <canvas id="stars-bg"></canvas>
 
     <div id="app">
-        <div id="game-container">
-            <canvas id="gameCanvas"></canvas>
-        </div>
-
-        <div id="controls">
-            <!-- 方向键 -->
-            <div class="d-pad">
-                <div class="d-btn up" id="btn-up">▲</div>
-                <div class="d-btn down" id="btn-down">▼</div>
-                <div class="d-btn left" id="btn-left">◀</div>
-                <div class="d-btn right" id="btn-right">▶</div>
+        <!-- 顶部 -->
+        <header class="header">
+            <div class="header-inner">
+                <h1 class="title">
+                    <span class="title-icon">🕹️</span>
+                    <span class="title-text">GAME CENTER</span>
+                </h1>
+                <p class="subtitle">经典游戏 · 像素重现</p>
             </div>
+        </header>
 
-            <!-- 动作键 -->
-            <div class="action-btns">
-                <div class="action-btn enter-btn" id="btn-enter">OK</div>
-                <div class="action-btn fire" id="btn-fire">A</div>
-                <div class="action-btn special" id="btn-special">B</div>
-            </div>
-        </div>
+        <!-- 游戏列表 -->
+        <main class="game-grid" id="game-grid">
+            <!-- JS 动态填充 -->
+        </main>
+
+        <!-- 底部 -->
+        <footer class="footer">
+            <p>Pixel Games Collection · Made with ❤️</p>
+        </footer>
     </div>
 
-    <!-- JS 模块按依赖顺序加载 -->
-    <script src="js/font.js"></script>
-    <script src="js/render.js"></script>
-    <script src="js/data.js"></script>
-    <script src="js/input.js"></script>
-    <script src="js/audio.js"></script>
-    <script src="js/saves.js"></script>
-    <script src="js/main.js"></script>
+    <script src="center.js"></script>
 </body>
 </html>

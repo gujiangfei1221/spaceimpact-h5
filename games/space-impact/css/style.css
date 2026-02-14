@@ -1,0 +1,222 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    touch-action: none;
+    background: #1a1a2e;
+    font-family: monospace;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Game screen area - 紧凑，让 canvas 尽量大 */
+#game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: #2d3a1a;
+    border-bottom: 3px solid #111;
+    flex: 0 0 auto;
+    padding: 4px 0;
+}
+
+canvas {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    background: #c7f0d8;
+}
+
+/* Controls area - 占据剩余空间 */
+#controls {
+    width: 100%;
+    flex: 1;
+    background: #222;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    min-height: 0;
+}
+
+/* D-Pad - 更大的十字键 */
+.d-pad {
+    width: 160px;
+    height: 160px;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.d-btn {
+    position: absolute;
+    width: 52px;
+    height: 52px;
+    background: #3a3a3a;
+    border: 2px solid #555;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #aaa;
+    font-size: 20px;
+    font-weight: bold;
+    transition: background 0.05s;
+}
+
+.d-btn.active {
+    background: #666;
+    border-color: #888;
+}
+
+.d-btn.up    { top: 0;    left: 54px; }
+.d-btn.down  { bottom: 0; left: 54px; }
+.d-btn.left  { top: 54px; left: 0; }
+.d-btn.right { top: 54px; right: 0; }
+
+/* Action buttons - 更大更分散 */
+.action-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.action-btns-row {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.action-btn {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    border: 2px solid rgba(255,255,255,0.2);
+    transition: background 0.05s;
+}
+
+.action-btn.fire {
+    background: #c0392b;
+}
+.action-btn.fire.active {
+    background: #e74c3c;
+}
+
+.action-btn.special {
+    background: #2980b9;
+}
+.action-btn.special.active {
+    background: #3498db;
+}
+
+.action-btn.enter-btn {
+    width: 56px;
+    height: 56px;
+    background: #27ae60;
+    font-size: 13px;
+}
+.action-btn.enter-btn.active {
+    background: #2ecc71;
+}
+
+/* Landscape mode */
+@media (orientation: landscape) and (max-height: 500px) {
+    #app {
+        flex-direction: row;
+    }
+
+    #game-container {
+        flex: 1;
+        height: 100%;
+        border-bottom: none;
+        border-right: 3px solid #111;
+        border-left: 3px solid #111;
+        order: 1;
+        padding: 0;
+    }
+
+    #controls {
+        width: auto;
+        height: 100%;
+        flex: 0 0 auto;
+        flex-direction: column;
+        padding: 10px;
+        order: 2;
+    }
+
+    .d-pad {
+        width: 110px;
+        height: 110px;
+    }
+
+    .d-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 14px;
+    }
+
+    .d-btn.up    { left: 38px; }
+    .d-btn.down  { left: 38px; }
+    .d-btn.right { right: 0; }
+
+    .action-btns {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .action-btns-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .action-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 11px;
+    }
+
+    .action-btn.enter-btn {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+/* Loading screen */
+#loading {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: #1a1a2e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #c7f0d8;
+    font-size: 18px;
+    z-index: 100;
+}
+
+#loading.hidden {
+    display: none;
+}

@@ -1,77 +1,59 @@
-# Space Impact II
+# Game Center
 
-Space Impact II - 诺基亚经典游戏 H5 重制版。
+像素风游戏中心 — 经典游戏 H5 重制合集。
 
 ## 项目简介
 
-本项目是经典手机游戏 Space Impact 的现代 H5 重制版本，使用原生 JavaScript 开发，无需任何构建工具即可运行。
+本项目是一个复古像素风格的游戏中心，收录经典手机/掌机游戏的 H5 重制版本。使用原生 JavaScript 开发，无需任何构建工具即可运行。
 
-## 功能特性
+## 已收录游戏
 
-- 经典横版射击游戏玩法
-- 响应式设计，支持移动端和桌面端
-- 支持 PWA（渐进式 Web 应用）
-- 虚拟按键控制（方向键 + 动作键）
-- 分数存档系统
+| 游戏 | 说明 |
+|------|------|
+| **Space Impact II** | 诺基亚经典横版射击游戏 |
 
 ## 项目结构
 
 ```
 spaceimpact-h5/
-├── index.html          # 游戏主页面
-├── manifest.json       # PWA 配置
-├── css/
-│   └── style.css       # 样式文件
-├── js/                 # 游戏逻辑
-│   ├── font.js         # 字体渲染
-│   ├── render.js       # 画面渲染
-│   ├── data.js         # 游戏数据
-│   ├── input.js        # 输入处理
-│   ├── audio.js        # 音频系统
-│   ├── saves.js        # 存档管理
-│   └── main.js         # 主逻辑
-└── data/               # 游戏资源数据
+├── index.html              # 游戏中心主页
+├── center.css              # 游戏中心样式
+├── center.js               # 游戏中心逻辑
+├── manifest.json           # PWA 配置
+├── games/
+│   └── space-impact/       # Space Impact II
+│       ├── index.html      # 游戏页面
+│       ├── css/style.css   # 游戏样式
+│       ├── js/             # 游戏逻辑（7 个模块）
+│       └── data/           # 游戏资源数据
+└── Space-Impact-II-master/ # 原版 C 代码参考
 ```
 
 ## 快速开始
 
-### 方法一：直接打开
-
-在浏览器中直接打开 `index.html` 文件即可运行游戏。
-
-### 方法二：本地服务器
-
-使用任意静态服务器工具：
+使用任意静态服务器工具启动：
 
 ```bash
 # Python 3
 python -m http.server 8080
 
-# Node.js (需安装 serve)
+# Node.js
 npx serve .
-
-# PHP
-php -S localhost:8080
 ```
 
-然后访问 `http://localhost:8080`
+然后访问 `http://localhost:8080` 进入游戏中心主页。
 
-## 操作说明
+## 添加新游戏
 
-### 桌面端
-- **方向键**: 上下左右移动
-- **A 键**: 射击
-- **B 键**: 特殊技能
-- **Enter**: 确认/开始
-
-### 移动端
-使用屏幕下方的虚拟按键进行操作。
+1. 在 `games/` 目录下创建新的游戏子目录
+2. 编辑 `center.js` 中的 `GAMES` 数组，添加游戏信息
+3. 刷新即可看到新游戏卡片
 
 ## 技术栈
 
 - 原生 HTML5 Canvas
 - 原生 JavaScript (ES6+)
-- CSS3
+- CSS3（像素风 + 扫描线效果）
 - 无外部依赖
 
 ## 浏览器兼容性

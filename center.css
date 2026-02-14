@@ -1,0 +1,329 @@
+/* ==================== Reset & Base ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'PixelFont';
+    src: local('Courier New'), local('monospace');
+}
+
+html, body {
+    width: 100%;
+    min-height: 100%;
+    background: #0a0a1a;
+    color: #e0e0e0;
+    font-family: 'Courier New', monospace;
+    overflow-x: hidden;
+}
+
+/* ==================== Scanlines Overlay ==================== */
+.scanlines {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 1000;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.08) 2px,
+        rgba(0, 0, 0, 0.08) 4px
+    );
+}
+
+/* ==================== Stars Background ==================== */
+#stars-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ==================== App Container ==================== */
+#app {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==================== Header ==================== */
+.header {
+    text-align: center;
+    padding: 48px 20px 32px;
+    background: linear-gradient(180deg, rgba(20, 20, 50, 0.9) 0%, transparent 100%);
+}
+
+.header-inner {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.title-icon {
+    font-size: 40px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.title-text {
+    background: linear-gradient(90deg, #00ff88, #00ccff, #ff00cc, #00ff88);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 4s linear infinite;
+    text-shadow: none;
+}
+
+.subtitle {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #667;
+    letter-spacing: 4px;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+@keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+}
+
+/* ==================== Game Grid ==================== */
+.game-grid {
+    flex: 1;
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    align-content: start;
+}
+
+/* ==================== Game Card ==================== */
+.game-card {
+    position: relative;
+    background: linear-gradient(145deg, #12122a, #1a1a35);
+    border: 1px solid #2a2a4a;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.game-card:hover {
+    transform: translateY(-4px);
+    border-color: #00ff88;
+    box-shadow:
+        0 8px 32px rgba(0, 255, 136, 0.15),
+        0 0 0 1px rgba(0, 255, 136, 0.1);
+}
+
+.game-card:active {
+    transform: translateY(-2px);
+}
+
+/* Card Thumbnail */
+.card-thumb {
+    width: 100%;
+    height: 160px;
+    background: #0d0d20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 64px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-thumb::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0; right: 0;
+    height: 40px;
+    background: linear-gradient(transparent, #12122a);
+}
+
+/* Pixel grid pattern on thumbnail */
+.card-thumb::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 8px 8px;
+}
+
+/* Card Body */
+.card-body {
+    padding: 16px 20px 20px;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.card-desc {
+    font-size: 12px;
+    color: #889;
+    line-height: 1.5;
+    margin-bottom: 14px;
+}
+
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.card-tag {
+    font-size: 10px;
+    padding: 3px 8px;
+    background: rgba(0, 255, 136, 0.08);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    border-radius: 4px;
+    color: #00ff88;
+    letter-spacing: 1px;
+}
+
+.card-play-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(135deg, #00cc6a, #00aa55);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+    text-align: center;
+    text-decoration: none;
+}
+
+.card-play-btn:hover {
+    background: linear-gradient(135deg, #00ff88, #00cc6a);
+    box-shadow: 0 4px 16px rgba(0, 255, 136, 0.3);
+}
+
+.card-play-btn:active {
+    background: linear-gradient(135deg, #00aa55, #009944);
+}
+
+/* ==================== Empty State ==================== */
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: #445;
+}
+
+.empty-state .icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+/* ==================== Coming Soon Card ==================== */
+.game-card.coming-soon {
+    opacity: 0.5;
+    cursor: default;
+    border-style: dashed;
+}
+
+.game-card.coming-soon:hover {
+    transform: none;
+    border-color: #2a2a4a;
+    box-shadow: none;
+}
+
+.coming-soon-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 10px;
+    padding: 3px 10px;
+    background: rgba(255, 200, 0, 0.15);
+    border: 1px solid rgba(255, 200, 0, 0.3);
+    border-radius: 4px;
+    color: #ffc800;
+    letter-spacing: 1px;
+    z-index: 2;
+}
+
+/* ==================== Footer ==================== */
+.footer {
+    text-align: center;
+    padding: 32px 20px;
+    color: #334;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+/* ==================== Responsive ==================== */
+@media (max-width: 640px) {
+    .header {
+        padding: 32px 16px 24px;
+    }
+
+    .title {
+        font-size: 24px;
+        letter-spacing: 3px;
+        gap: 10px;
+    }
+
+    .title-icon {
+        font-size: 28px;
+    }
+
+    .subtitle {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    .game-grid {
+        padding: 16px;
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .card-thumb {
+        height: 120px;
+        font-size: 48px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .game-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

@@ -1,11 +1,11 @@
 {
-    "name": "Space Impact II",
-    "short_name": "SpaceImpact",
+    "name": "Game Center",
+    "short_name": "GameCenter",
     "start_url": "./index.html",
     "display": "standalone",
     "orientation": "any",
-    "background_color": "#1a1a2e",
-    "theme_color": "#1a1a2e",
-    "description": "Space Impact II - Nokia classic game remake",
+    "background_color": "#0a0a1a",
+    "theme_color": "#0a0a1a",
+    "description": "Pixel Games Collection - Classic game remakes",
     "icons": []
 }

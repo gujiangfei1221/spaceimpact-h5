@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#1a1a2e">
+    <title>Space Impact II</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div id="loading">Loading...</div>
+
+    <div id="app">
+        <div id="game-container">
+            <canvas id="gameCanvas"></canvas>
+        </div>
+
+        <div id="controls">
+            <!-- 方向键 -->
+            <div class="d-pad">
+                <div class="d-btn up" id="btn-up">▲</div>
+                <div class="d-btn down" id="btn-down">▼</div>
+                <div class="d-btn left" id="btn-left">◀</div>
+                <div class="d-btn right" id="btn-right">▶</div>
+            </div>
+
+            <!-- 动作键 -->
+            <div class="action-btns">
+                <div class="action-btn enter-btn" id="btn-enter">OK</div>
+                <div class="action-btns-row">
+                    <div class="action-btn fire" id="btn-fire">A</div>
+                    <div class="action-btn special" id="btn-special">B</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS 模块按依赖顺序加载 -->
+    <script src="js/font.js"></script>
+    <script src="js/render.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/input.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/saves.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
